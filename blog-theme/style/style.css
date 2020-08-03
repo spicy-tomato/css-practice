@@ -209,7 +209,11 @@ p {
 }
 
 .content-wrapper .search .search-box:hover, .content-wrapper .search .search-box:focus-within {
+  -webkit-transition: border-width 0s;
+  transition: border-width 0s;
   border-width: 2px;
+  -webkit-transition: width 0.5s;
+  transition: width 0.5s;
   width: 70%;
 }
 
@@ -247,6 +251,16 @@ p {
   -webkit-transition-duration: 0.01s;
           transition-duration: 0.01s;
   background: #ffffff;
+  color: #01cbcb;
+}
+
+.content-wrapper .search .button:active i {
+  color: #01cbcb;
+  -webkit-transition-duration: 0.25s;
+          transition-duration: 0.25s;
+}
+
+.content-wrapper .search .button:active p {
   color: #01cbcb;
 }
 
@@ -379,11 +393,21 @@ p {
   color: #01cbcb;
 }
 
+.content-wrapper .pagination > .nearby .button:active i {
+  color: #01cbcb;
+  -webkit-transition-duration: 0.25s;
+          transition-duration: 0.25s;
+}
+
+.content-wrapper .pagination > .nearby .button:active p {
+  color: #01cbcb;
+}
+
 .content-wrapper .pagination > .nearby .button a {
-  padding: 8px 20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  padding: 8px 15px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -460,6 +484,16 @@ p {
   color: #01cbcb;
 }
 
+.content-wrapper .pagination > .specify > div .button:active i {
+  color: #01cbcb;
+  -webkit-transition-duration: 0.25s;
+          transition-duration: 0.25s;
+}
+
+.content-wrapper .pagination > .specify > div .button:active p {
+  color: #01cbcb;
+}
+
 .content-wrapper .pagination > .specify > div .button a {
   text-align: center;
   display: -webkit-box;
@@ -477,6 +511,12 @@ p {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.content-wrapper footer span {
+  height: 1px;
+  width: 100%;
+  background: #686a72;
 }
 
 .content-wrapper footer > div {

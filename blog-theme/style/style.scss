@@ -28,6 +28,15 @@ $font-stack: "Open Sans", Arial;
 		transition-duration: 0.01s;
 		background: $secondary-color;
 		color: $primary-color;
+
+		i {
+			color: $primary-color;
+			transition-duration: 0.25s;
+		}
+
+		p {
+			color: $primary-color;
+		}
 	}
 }
 
@@ -215,7 +224,9 @@ p {
 
 			&:hover,
 			&:focus-within {
+				transition: border-width 0s;
 				border-width: 2px;
+				transition: width 0.5s;
 				width: 70%;
 			}
 
@@ -317,8 +328,8 @@ p {
 				@include button;
 
 				a {
-					padding: 8px 20px;
-					display: flex;
+					padding: 8px 15px;
+					display: inline-flex;
 					align-items: center;
 
 					div {
@@ -372,6 +383,10 @@ p {
 		margin-top: 160px;
 		display: flex;
 		flex-direction: column;
+
+		span {
+			@include bar;
+		}
 
 		> div {
 			margin-top: 30px;
