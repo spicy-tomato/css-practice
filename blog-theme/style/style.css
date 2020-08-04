@@ -204,16 +204,12 @@ p {
   margin-right: 25px;
   border: 1px solid #01cbcb;
   border-radius: 2%;
-  -webkit-transition-duration: 0.5s;
-          transition-duration: 0.5s;
+  -webkit-transition: border-width 0s, width 0.5s;
+  transition: border-width 0s, width 0.5s;
 }
 
 .content-wrapper .search .search-box:hover, .content-wrapper .search .search-box:focus-within {
-  -webkit-transition: border-width 0s;
-  transition: border-width 0s;
-  border-width: 2px;
-  -webkit-transition: width 0.5s;
-  transition: width 0.5s;
+  border-width: 3px;
   width: 70%;
 }
 
