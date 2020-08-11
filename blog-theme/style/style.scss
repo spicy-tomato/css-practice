@@ -5,6 +5,11 @@ $hover-primary-color: #66dfdf;
 $text-color: #686a72;
 
 $font-stack: "Open Sans", Arial;
+$logo-size: 60px;
+
+@mixin menu-btn-effects {
+	transition: all 0.5s ease-in-out;
+}
 
 @mixin button {
 	background: $primary-color;
@@ -77,6 +82,10 @@ h4 {
 
 a {
 	text-decoration: none;
+
+	&.icon {
+		color: $secondary-color;
+	}
 }
 
 p {
@@ -121,9 +130,10 @@ p {
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			cursor: pointer;
 
 			> i {
-				font-size: 60px;
+				font-size: $logo-size;
 			}
 		}
 
@@ -412,6 +422,14 @@ p {
 	}
 }
 
+.navigation {
+	display: none;
+}
+
+.name {
+	user-select: none;
+}
+
 @media (min-width: 1240px) {
 	.page-wrapper {
 		margin: 0 calc((100% - 1240px) / 2);
@@ -419,5 +437,174 @@ p {
 
 	.content-wrapper {
 		margin-left: 310px;
+	}
+}
+
+@media (max-width: 1000px) {
+	$nav-height: 15vw;
+
+	.side-bar {
+		display: none;
+	}
+
+	.navigation {
+		$nav-padding: 2.5%;
+
+		display: flex;
+		justify-content: space-between;
+		padding: $nav-padding;
+		height: $nav-height;
+
+		background: $primary-color;
+		color: $secondary-color;
+
+		.logo-area {
+			$logo-size: $logo-size + 30;
+			$nav-padding: 2.5%;
+			$name-font-size: 35px;
+			$logo-margin-left: 5%;
+
+			width: 40%;
+			display: flex;
+
+			margin-left: $logo-margin-left;
+			justify-content: center;
+			align-items: center;
+			@include menu-btn-effects;
+			z-index: 2;
+
+			.logo {
+				font-size: $logo-size;
+				@include menu-btn-effects;
+
+				//  Animation
+				&.open {
+					transform: translateX(
+						calc(50vw - #{$nav-padding} - #{$logo-margin-left} - #{$logo-size})
+					);
+				}
+			}
+
+			.name {
+				margin-left: 20%;
+				@include menu-btn-effects;
+
+				h3 {
+					font-size: $name-font-size;
+				}
+
+				//  Animation
+				&.open {
+					color: transparent;
+				}
+			}
+
+			//  Animation
+			&.open {
+				margin-left: calc(50% - #{$logo-size/2} - #{$nav-padding/2});
+
+				.name {
+					color: transparent;
+				}
+
+				.logo {
+				}
+			}
+		}
+
+		.menu-button {
+			$button-size: 105px;
+
+			position: relative;
+			width: $button-size;
+			height: $button-size;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-right: 5%;
+
+			cursor: pointer;
+			@include menu-btn-effects;
+			z-index: 10;
+
+			div {
+				$burger-width: 70px;
+				$burger-height: 7px;
+				$burger-distance: 20px;
+
+				width: $burger-width;
+				height: $burger-height;
+				background: $secondary-color;
+				border-radius: 5%;
+				@include menu-btn-effects;
+
+				&::before,
+				&::after {
+					content: "";
+					width: $burger-width;
+					height: $burger-height;
+					position: absolute;
+
+					display: flex;
+					background: $secondary-color;
+					border-radius: 5%;
+					@include menu-btn-effects;
+				}
+
+				&::before {
+					transform: translateY(-$burger-distance);
+				}
+
+				&::after {
+					transform: translateY($burger-distance);
+				}
+			}
+
+			// Animation
+			&.open div {
+				transform: translateX(-50px);
+				background: transparent;
+				box-shadow: none;
+
+				&::before {
+					transform: rotate(45deg) translate(35px, -35px);
+				}
+
+				&::after {
+					transform: rotate(-45deg) translate(35px, 35px);
+				}
+			}
+		}
+	}
+
+	.dropdown {
+		height: $nav-height;
+		@include menu-btn-effects;
+
+		&:not(.open) {
+			background: $secondary-color;
+			display: none;
+			// transition: background 0.5s ease-in-out;
+		}
+
+		&.open {
+			position: fixed;
+			height: 100vh;
+			top: $nav-height;
+			left: 0;
+			right: 0;
+
+			display: flex;
+			flex-direction: column;
+			background: $primary-color;
+			z-index: 1;
+			@include menu-btn-effects;
+		}
+	}
+
+	.content-wrapper {
+		margin-left: 0;
+		padding: calc(#{$nav-height} - 15px) 45px 50px;
 	}
 }
