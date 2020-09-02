@@ -448,45 +448,47 @@ p {
 	}
 
 	.navigation {
-		$nav-padding: 2.5%;
+		$nav-padding-lr: 7.5%;
+
+		position: fixed;
+		height: $nav-height;
+		width: 100%;
 
 		display: flex;
 		justify-content: space-between;
-		padding: $nav-padding;
-		height: $nav-height;
+		align-items: center;
+		padding: 2.5% #{$nav-padding-lr};
 
 		background: $primary-color;
 		color: $secondary-color;
 
 		.logo-area {
 			$logo-size: $logo-size + 30;
-			$nav-padding: 2.5%;
 			$name-font-size: 35px;
-			$logo-margin-left: 5%;
 
-			width: 40%;
+			width: 50%;
 			display: flex;
 
-			margin-left: $logo-margin-left;
-			justify-content: center;
+			justify-content: flex;
 			align-items: center;
 			@include menu-btn-effects;
 			z-index: 2;
 
 			.logo {
+				margin-left: 0;
 				font-size: $logo-size;
 				@include menu-btn-effects;
 
 				//  Animation
 				&.open {
 					transform: translateX(
-						calc(50vw - #{$nav-padding} - #{$logo-margin-left} - #{$logo-size})
+						calc(50vw - #{$nav-padding-lr} - #{$logo-size})
 					);
 				}
 			}
 
 			.name {
-				margin-left: 20%;
+				margin-left: 10%;
 				@include menu-btn-effects;
 
 				h3 {
@@ -498,22 +500,10 @@ p {
 					color: transparent;
 				}
 			}
-
-			//  Animation
-			&.open {
-				margin-left: calc(50% - #{$logo-size/2} - #{$nav-padding/2});
-
-				.name {
-					color: transparent;
-				}
-
-				.logo {
-				}
-			}
 		}
 
 		.menu-button {
-			$button-size: 105px;
+			$button-size: 90px;
 
 			position: relative;
 			width: $button-size;
@@ -522,7 +512,6 @@ p {
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			margin-right: 5%;
 
 			cursor: pointer;
 			@include menu-btn-effects;
@@ -579,32 +568,71 @@ p {
 	}
 
 	.dropdown {
-		height: $nav-height;
+		position: fixed;
+		top: $nav-height;
+		left: 0;
+		height: 100vh;
+		width: 100vw;
+		padding-bottom: 200px;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 		@include menu-btn-effects;
 
-		&:not(.open) {
-			background: $secondary-color;
-			display: none;
-			// transition: background 0.5s ease-in-out;
+		> * {
+			background: inherit;
+			visibility: hidden;
+		}
+
+		> div {
+			height: 17.5%;
+
+			a {
+				height: 100%;
+				width: 100%;
+
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				color: $secondary-color;
+				@include menu-btn-effects;
+
+				i {
+					font-size: 25px;
+				}
+
+				h4 {
+					font-size: 25px;
+					margin-left: 15px;
+				}
+			}
 		}
 
 		&.open {
-			position: fixed;
-			height: 100vh;
-			top: $nav-height;
-			left: 0;
-			right: 0;
-
-			display: flex;
-			flex-direction: column;
+			@include menu-btn-effects;
 			background: $primary-color;
 			z-index: 1;
-			@include menu-btn-effects;
+
+			> * {
+				display: block;
+				visibility: visible;
+			}
+
+			> div {
+				a {
+					&:active {
+						background: $hover-primary-color;
+						transition-duration: 0.01s;
+					}
+				}
+			}
 		}
 	}
 
 	.content-wrapper {
 		margin-left: 0;
-		padding: calc(#{$nav-height} - 15px) 45px 50px;
+		padding: calc(#{$nav-height} + 50px) 45px 50px;
 	}
 }

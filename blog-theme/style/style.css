@@ -575,26 +575,30 @@ p {
     display: none;
   }
   .navigation {
+    position: fixed;
+    height: 15vw;
+    width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
-    padding: 2.5%;
-    height: 15vw;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 2.5% 7.5%;
     background: #01cbcb;
     color: #ffffff;
   }
   .navigation .logo-area {
-    width: 40%;
+    width: 50%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    margin-left: 5%;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -webkit-box-pack: flex;
+        -ms-flex-pack: flex;
+            justify-content: flex;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -603,16 +607,17 @@ p {
     z-index: 2;
   }
   .navigation .logo-area .logo {
+    margin-left: 0;
     font-size: 90px;
     -webkit-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
   }
   .navigation .logo-area .logo.open {
-    -webkit-transform: translateX(calc(50vw - 2.5% - 5% - 90px));
-            transform: translateX(calc(50vw - 2.5% - 5% - 90px));
+    -webkit-transform: translateX(calc(50vw - 7.5% - 90px));
+            transform: translateX(calc(50vw - 7.5% - 90px));
   }
   .navigation .logo-area .name {
-    margin-left: 20%;
+    margin-left: 10%;
     -webkit-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
   }
@@ -622,16 +627,10 @@ p {
   .navigation .logo-area .name.open {
     color: transparent;
   }
-  .navigation .logo-area.open {
-    margin-left: calc(50% - 45px - 1.25%);
-  }
-  .navigation .logo-area.open .name {
-    color: transparent;
-  }
   .navigation .menu-button {
     position: relative;
-    width: 105px;
-    height: 105px;
+    width: 90px;
+    height: 90px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -641,7 +640,6 @@ p {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    margin-right: 5%;
     cursor: pointer;
     -webkit-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
@@ -692,20 +690,12 @@ p {
             transform: rotate(-45deg) translate(35px, 35px);
   }
   .dropdown {
-    height: 15vw;
-    -webkit-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
-  }
-  .dropdown:not(.open) {
-    background: #ffffff;
-    display: none;
-  }
-  .dropdown.open {
     position: fixed;
-    height: 100vh;
     top: 15vw;
     left: 0;
-    right: 0;
+    height: 100vh;
+    width: 100vw;
+    padding-bottom: 200px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -713,14 +703,60 @@ p {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    background: #01cbcb;
-    z-index: 1;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     -webkit-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
   }
+  .dropdown > * {
+    background: inherit;
+    visibility: hidden;
+  }
+  .dropdown > div {
+    height: 17.5%;
+  }
+  .dropdown > div a {
+    height: 100%;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    color: #ffffff;
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+  }
+  .dropdown > div a i {
+    font-size: 25px;
+  }
+  .dropdown > div a h4 {
+    font-size: 25px;
+    margin-left: 15px;
+  }
+  .dropdown.open {
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    background: #01cbcb;
+    z-index: 1;
+  }
+  .dropdown.open > * {
+    display: block;
+    visibility: visible;
+  }
+  .dropdown.open > div a:active {
+    background: #66dfdf;
+    -webkit-transition-duration: 0.01s;
+            transition-duration: 0.01s;
+  }
   .content-wrapper {
     margin-left: 0;
-    padding: calc(15vw - 15px) 45px 50px;
+    padding: calc(15vw + 50px) 45px 50px;
   }
 }
 /*# sourceMappingURL=style.css.map */
